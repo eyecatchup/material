@@ -1,0 +1,26 @@
+material-bottom-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $bottom-sheet-vertical-padding $bottom-sheet-horizontal-padding;
+  z-index: $z-index-bottom-sheet;
+
+  background-color: $bottom-sheet-background-color;
+  border-top: 1px solid $bottom-sheet-border-top-color;
+
+  material-item {
+    display: flex;
+    align-items: center;
+    height: $bottom-sheet-list-item-height;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    div.material-icon-container {
+      display: inline-block;
+      margin-right: $bottom-sheet-icon-after-margin;
+    }
+  }
+}

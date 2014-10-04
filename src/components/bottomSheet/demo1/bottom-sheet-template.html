@@ -1,0 +1,10 @@
+<material-bottom-sheet>
+  <material-list>
+    <material-item ng-repeat="item in items" ng-click="listItemClick($index)">
+      <div class="material-icon-container">
+        <material-icon icon="/img/icons/ic_{{item.icon}}_24px.svg" style="color: #444; width: 24px; height: 24px;"></material-icon>
+      </div>
+      {{ item.name }}
+    </material-item>
+  </material-list>
+</material-bottom-sheet>

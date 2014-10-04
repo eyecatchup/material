@@ -12,7 +12,8 @@ angular.module('material.components.bottomSheet', [
   ])
   .factory('$materialBottomSheet', [
     '$$interimElement',
-    '$animate'
+    '$animate',
+    MaterialBottomSheet
   ]);
 
 function MaterialBottomSheetDirective() {
@@ -109,6 +110,7 @@ function MaterialBottomSheetDirective() {
  */
 
 function MaterialBottomSheet($$interimElement, $animate) {
+  var backdrop;
 
   var factoryDef = {
     onShow: onShow,
@@ -119,10 +121,16 @@ function MaterialBottomSheet($$interimElement, $animate) {
   return $materialBottomSheet;
 
   function onShow(scope, element, options) {
+    backdrop = angular.element('<material-backdrop class="opaque ng-enter">');
+    backdrop.on('click touchstart', function() {
+      $materialBottomSheet.cancel();
+    });
+    $animate.enter(backdrop, options.parent, null);
     return $animate.enter(element, options.parent);
   }
 
   function onRemove(scope, element, options) {
-    return $animate.leave(element);
+    //$animate.leave(backdrop);
+    return $animate.leave(element, function() { console.log('done!'); });
   }
 }
